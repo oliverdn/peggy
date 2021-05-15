@@ -48,9 +48,6 @@ abstract class AbstractTokenizer {
     }
 
     private TokenInterface getToken() {
-//        List<Supplier<TokenInterface>> tokenFunctions = List.of(
-//                () -> StringToken.getToken(pattern),
-//                () -> CharacterExpressionToken.getToken(pattern));
         if (tokenFunctions == null) {
             tokenFunctions = functionList == null ?
                     new FunctionList().get(pattern) :

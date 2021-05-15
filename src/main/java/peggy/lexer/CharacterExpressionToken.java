@@ -75,16 +75,10 @@ public class CharacterExpressionToken implements TokenInterface {
                         i += 1;
                     }
                 } else if (i + 2 < lcpattern.length() && lcpattern.charAt(i + 1) == '-') {
-                    boolean found = Character.codePointAt(lcpattern, i) <= code &&
-                            Character.codePointAt(lcpattern, i + 2) >= code ||
-                            Character.codePointAt(ucpattern, i) <= code &&
-                                    Character.codePointAt(ucpattern, i + 2) >= code;
-                    foundAny = negated != found; // found && !negated || !found && negated;
+                    foundAny = matchRange(code, i);
                     i += 2;
-                } else if (i < lcpattern.length()) {
-                    boolean found = Character.codePointAt(lcpattern, i) == code ||
-                            Character.codePointAt(ucpattern, i) == code;
-                    foundAny = negated != found;
+                } else {
+                    foundAny = matchSingleCharacter(code, i);
                 }
             }
 
@@ -92,5 +86,19 @@ public class CharacterExpressionToken implements TokenInterface {
         }
 
         return false;
+    }
+
+    private boolean matchSingleCharacter(int code, int i) {
+        boolean found = Character.codePointAt(lcpattern, i) == code ||
+                Character.codePointAt(ucpattern, i) == code;
+        return negated != found;
+    }
+
+    private boolean matchRange(int code, int i) {
+        boolean found = Character.codePointAt(lcpattern, i) <= code &&
+                Character.codePointAt(lcpattern, i + 2) >= code ||
+                Character.codePointAt(ucpattern, i) <= code &&
+                        Character.codePointAt(ucpattern, i + 2) >= code;
+        return negated != found; // found && !negated || !found && negated;
     }
 }

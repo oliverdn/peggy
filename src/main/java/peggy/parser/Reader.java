@@ -67,39 +67,34 @@ public class Reader {
         Sequence sequence = new Sequence();
         List<Sequence> sequences = new ArrayList<>(
                 Arrays.asList(sequence));
-        int start = end;
         CardinalToken cardinalToken = expressionTokenizer.copy(CharBuffer.wrap(text)
                 .subSequence(end, text.length()))
                 .getCardinalToken();
         while (cardinalToken != null) {
+            // match TokenInterface
             sequence.addCardinalToken(cardinalToken);
             end += cardinalToken.getEnd();
+            // match whitespace
             Tokenizer tokenizer = whitespaceTokenizer.copy();
             if (tokenizer.match(text, end)) {
                 end += tokenizer.getLexeme().length();
             }
+            // match "/" character
             Tokenizer separator = choiceTokenizer.copy();
-            boolean foundSeparator = false;
             if (separator.match(text, end)) {
-                // sequences.add(new Sequence(text.substring(start, end)));
                 sequence = new Sequence();
                 sequences.add(sequence);
-                foundSeparator = true;
                 end += separator.getLexeme().length();
             }
+            // match whitespace
             if (tokenizer.match(text, end)) {
                 end += tokenizer.getLexeme().length();
-            }
-            if (foundSeparator) {
-                start = end;
             }
 
             cardinalToken = expressionTokenizer.copy(CharBuffer.wrap(text)
                     .subSequence(end, text.length()))
                     .getCardinalToken();
         }
-
-        // sequences.add(new Sequence(text.substring(start, end)));
 
         return sequences;
     }

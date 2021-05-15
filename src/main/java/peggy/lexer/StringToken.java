@@ -70,8 +70,5 @@ public class StringToken implements TokenInterface {
         }
 
         return true;
-        // return CharSequence.compare(CharBuffer.wrap(value).subSequence(offset, offset + text.length()),
-        //         text) == 0;
-        // return value.startsWith(text, offset);
     }
 }

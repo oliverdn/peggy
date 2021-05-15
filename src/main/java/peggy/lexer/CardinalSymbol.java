@@ -26,6 +26,6 @@ public enum CardinalSymbol {
     public boolean startsWith(CharSequence pattern, int offset) {
         return text.length() == 0 ||
                 offset < pattern.length() &&
-                text.charAt(0) == pattern.charAt(offset); // pattern.startsWith(text, offset);
+                text.charAt(0) == pattern.charAt(offset);
     }
 }

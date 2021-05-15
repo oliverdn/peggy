@@ -1,7 +1,5 @@
 package peggy.vm;
 
-import peggy.lexer.Choice;
-
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,8 +21,7 @@ public class Environment<T> {
     }
 
     public T get(CharSequence nonterminalSymbol) {
-        T c = symbols.get(nonterminalSymbol.toString());
-        return c;
+        return symbols.get(nonterminalSymbol.toString());
     }
 
     public void put(CharSequence name, T value) {

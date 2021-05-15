@@ -48,15 +48,15 @@ Given this ruleset:
 Inflection = Causative / Negative / Passive / PoliteNegative / PoliteVolitional ;
 Causative = "させる" / "せる" / FormationA "せる"  / "せ" Inflection / FormationA "せ" Inflection ;
 Continuative = "て" / "で" / "って" / "んで" / "うて" / "いて" / "いで" / "して" ;
-Negative = "な" AdjVerb / FormationA "な" AdjVerb ;;
+Negative = "な" AdjVerb / FormationA "な" AdjVerb ;
 Passive = "られる" / "れる" ;
 PoliteNegative = "ません" ;
 PoliteVolitional = "ましょう" / FormationI "ましょう" / "しょう" ;
 Provisional = "ければ" / "なきゃ" / "なくちゃ" ;
-FormationA = "わ" / "か" / "が" / "さ" / "た" / "ま" / "ば" / "な" / "ら" ;;
-FormationE = "え" / "け" / "げ" / "せ" / "て" / "め" / "べ" / "ね" / "れ" ;;
-FormationI = "い" / "き" / "ぎ" / "し" / "ち" / "み" / "び" / "に" / "り" ;;
-FormationO = "お" / "こ" / "ご" / "そ" / "と" / "も" / "ぼ" / "の" / "ろ" / "よ" ;;
+FormationA = "わ" / "か" / "が" / "さ" / "た" / "ま" / "ば" / "な" / "ら" ;
+FormationE = "え" / "け" / "げ" / "せ" / "て" / "め" / "べ" / "ね" / "れ" ;
+FormationI = "い" / "き" / "ぎ" / "し" / "ち" / "み" / "び" / "に" / "り" ;
+FormationO = "お" / "こ" / "ご" / "そ" / "と" / "も" / "ぼ" / "の" / "ろ" / "よ" ;
 AdjVerb = Provisional / "い" Continuative Inflection / "い" ;
 ```
 

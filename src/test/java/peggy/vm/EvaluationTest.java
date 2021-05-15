@@ -43,11 +43,11 @@ class EvaluationTest {
 
     @Test
     void consumeReference() {
-        evaluation.load("S = Rule \"=\" Value ;;\n" +
+        evaluation.load("Grammar = Rule \"=\" Value ;;\n" +
                 "Rule = [a-z]+ ;;\n" +
                 "Value = [0-9]+ ;;");
         assertTrue(evaluation.match("abc=3", 0));
-        assertEquals(3, evaluation.getEnvironment().get("S")
+        assertEquals(3, evaluation.getEnvironment().get("Grammar")
                 .getSequences().get(0).getCardinalTokenCount());
         SequenceMatch sequenceMatch = evaluation.getSequenceMatch();
         assertEquals(5, sequenceMatch.length());
